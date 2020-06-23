@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "124328873806",
+    "firebase_url": "https://bighatti-c5ca7.firebaseio.com",
+    "project_id": "bighatti-c5ca7",
+    "storage_bucket": "bighatti-c5ca7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124328873806:android:79355fd2382fbf04c4d81f",
+        "android_client_info": {
+          "package_name": "com.aditya.bighatti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124328873806-t83be1d3j06d45g9qm6ijoa2kgkh6ll1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwF2vTz1WG54vDGVroaUHU-LiFx2VIfKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124328873806-t83be1d3j06d45g9qm6ijoa2kgkh6ll1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
