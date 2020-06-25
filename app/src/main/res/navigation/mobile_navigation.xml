@@ -5,6 +5,7 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
+    <!--Home(Anand)-->
     <fragment
         android:id="@+id/nav_home"
         android:name="com.aditya.bighatti.Activity.ui.home.HomeFragment"
@@ -29,16 +30,30 @@
             app:argType="string" />
     </fragment>
 
+
+    <!-- My orders-->
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.aditya.bighatti.Activity.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <!-- My Account-->
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.aditya.bighatti.Activity.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
+
+    <!-- My Wishlist-->
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.aditya.bighatti.Activity.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_my_wishlist"
+        android:name="com.aditya.bighatti.Fragments.MyWishlistFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_my_wishlist" />
+
+
+
 
 </navigation>
