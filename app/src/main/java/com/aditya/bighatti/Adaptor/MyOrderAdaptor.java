@@ -1,5 +1,6 @@
 package com.aditya.bighatti.Adaptor;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aditya.bighatti.Activity.MyOrderItemModel;
+import com.aditya.bighatti.Activity.order_details;
 import com.aditya.bighatti.R;
 
 import java.util.List;
@@ -53,13 +55,20 @@ public class MyOrderAdaptor extends RecyclerView.Adapter<MyOrderAdaptor.ViewHold
         private TextView productTitle;
         private  TextView deliveryStatus;
         private LinearLayout rateNowContainer;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             productImage=itemView.findViewById(R.id.product_image);
             productTitle=itemView.findViewById(R.id.product_title);
             deliveryIndicator=itemView.findViewById(R.id.order_indicator);
             deliveryStatus=itemView.findViewById(R.id.order_delivered_date);
             rateNowContainer=itemView.findViewById(R.id.current_ratings_container);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(itemView.getContext(), order_details.class);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
         }
         private void setData(int resource,String title,String deliveryDate,int rating){
             productImage.setImageResource(resource);
