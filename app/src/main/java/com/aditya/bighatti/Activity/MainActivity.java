@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration AppBarConfiguration;
     private FrameLayout frameLayout;
     private TextView actionBarLogo;
+//    private Window window;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +37,18 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar ().setDisplayShowTitleEnabled(false);
 
+//        window=getWindow();
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         frameLayout=findViewById(R.id.main_Frame_layout);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home , R.id.nav_slideshow,R.id.nav_gallery,R.id.nav_my_wishlist)
+                R.id.nav_home , R.id.nav_slideshow,R.id.nav_gallery,R.id.nav_my_wishlist,R.id.nav_rewards)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -98,4 +104,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
     }
+
 }
