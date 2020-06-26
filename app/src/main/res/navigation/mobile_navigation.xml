@@ -40,10 +40,10 @@
 
     <!-- My Account-->
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.aditya.bighatti.Activity.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_account"
+        android:name="com.aditya.bighatti.Fragments.MyAccountFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_my_account" />
 
 
     <!-- My Wishlist-->
