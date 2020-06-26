@@ -23,7 +23,7 @@
         <item
             android:icon="@drawable/userssmall"
             android:title="My Account"
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_account"
             />
     </group>
     <item
