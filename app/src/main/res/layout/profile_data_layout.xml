@@ -77,5 +77,6 @@
         app:srcCompat="@drawable/gear"
         android:background="@color/white"
         app:borderWidth="0dp"
+        android:tint="@color/main"
         android:backgroundTint="@color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
