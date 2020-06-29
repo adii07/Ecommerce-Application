@@ -1,6 +1,7 @@
 package com.aditya.bighatti.Activity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,6 +11,7 @@ import com.aditya.bighatti.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,5 +49,23 @@ public class DeliveryActivity extends AppCompatActivity {
         cartAdaptor.notifyDataSetChanged();
 
         changeORaddNewaddressBTN.setVisibility(View.VISIBLE);
+
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id= item.getItemId();
+        if(id==R.id.main_search_icon){
+            return true;
+            //todo search icon
+        }
+        else if (id== android.R.id.home){
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
