@@ -1,11 +1,14 @@
 package com.aditya.bighatti;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.aditya.bighatti.Activity.CartItemModel;
+import com.aditya.bighatti.Activity.DeliveryActivity;
 import com.aditya.bighatti.Adaptor.CartAdaptor;
 
 import java.util.ArrayList;
@@ -26,6 +29,7 @@ public class MyCartFragment extends Fragment {
     }
 
     private RecyclerView cartItemsRecyclerView;
+    private Button continueBTN;
 
 
     @Override
@@ -35,6 +39,7 @@ public class MyCartFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_my_cart, container, false);
 
         cartItemsRecyclerView=view.findViewById(R.id.cart_items_recycler_view);
+        continueBTN=view.findViewById(R.id.cart_continue_button);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         cartItemsRecyclerView.setLayoutManager(layoutManager);
@@ -47,6 +52,14 @@ public class MyCartFragment extends Fragment {
         CartAdaptor cartAdaptor =new CartAdaptor(cartItemModelList);
         cartItemsRecyclerView.setAdapter(cartAdaptor);
         cartAdaptor.notifyDataSetChanged();
+
+        continueBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent deliveyIntent=new Intent(getContext(), DeliveryActivity.class);
+                getContext().startActivity(deliveyIntent);
+            }
+        });
         return view;
     }
 }
