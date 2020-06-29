@@ -1,11 +1,13 @@
 package com.aditya.bighatti.Activity;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -31,6 +33,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private static Boolean AlreadyAddedToWishList=false;
     private ViewPager productDetailsViewPager;
     private TabLayout productDetailsTabLayout;
+    private Button buyNowBTN;
     ///ratings layout
     private LinearLayout rateNowContainer;
     ///ratings layout
@@ -49,6 +52,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         addToWishlistButton=findViewById(R.id.add_to_wishList_button);
         productDetailsViewPager=findViewById(R.id.product_details_viewPager);
         productDetailsTabLayout=findViewById(R.id.product_details_tab_layout);
+        buyNowBTN=findViewById(R.id.buy_now_button);
         List<Integer>  productImages =new ArrayList<>();
         productImages.add(R.drawable.amul);
         productImages.add(R.drawable.amul);
@@ -104,6 +108,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
             });
         }
         ///ratings layout
+
+        buyNowBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent buyNowIntent= new Intent(ProductDetailsActivity.this,DeliveryActivity.class);
+                startActivity(buyNowIntent);
+            }
+        });
     }
 
     private void setRatings(int star_position) {
