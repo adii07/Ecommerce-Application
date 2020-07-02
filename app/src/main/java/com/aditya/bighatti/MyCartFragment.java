@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.aditya.bighatti.Activity.AddAddressActivity;
 import com.aditya.bighatti.Activity.CartItemModel;
-import com.aditya.bighatti.Activity.DeliveryActivity;
 import com.aditya.bighatti.Adaptor.CartAdaptor;
 
 import java.util.ArrayList;
@@ -38,6 +38,8 @@ public class MyCartFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_my_cart, container, false);
 
+
+
         cartItemsRecyclerView=view.findViewById(R.id.cart_items_recycler_view);
         continueBTN=view.findViewById(R.id.cart_continue_button);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
@@ -56,12 +58,13 @@ public class MyCartFragment extends Fragment {
         continueBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent deliveyIntent=new Intent(getContext(), DeliveryActivity.class);
+                Intent deliveyIntent=new Intent(getContext(), AddAddressActivity.class);
                 getContext().startActivity(deliveyIntent);
             }
         });
         return view;
     }
+
 
 
 
