@@ -53,7 +53,7 @@
                 android:ems="10"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/colorPrimaryDark"
                 android:inputType="textPersonName"
                 android:hint="City*" />
 
@@ -65,7 +65,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/colorPrimaryDark"
                 android:inputType="textMultiLine"
                 android:lines="3"
                 android:layout_gravity="start"
@@ -79,7 +79,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/colorPrimaryDark"
                 android:inputType="textMultiLine"
                 android:lines="3"
                 android:layout_gravity="start"
@@ -97,7 +97,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="8dp"
-                    android:textColor="@color/red"
+                    android:textColor="@color/colorPrimaryDark"
                     android:inputType="number"
                     android:hint="Pincode*" />
                 <EditText
@@ -107,7 +107,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="16dp"
-                    android:textColor="@color/red"
+                    android:textColor="@color/colorPrimaryDark"
                     android:inputType="textPersonName"
                     android:hint="State*" />
             </LinearLayout>
@@ -120,7 +120,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/colorPrimaryDark"
                 android:inputType="textPersonName"
                 android:hint="Landmark(optional)" />
 
@@ -141,7 +141,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/colorPrimaryDark"
                 android:inputType="textPersonName"
                 android:hint="Name*" />
 
@@ -153,7 +153,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/colorPrimaryDark"
                 android:inputType="number"
                 android:hint="Mobile Number*" />
 
@@ -165,7 +165,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/colorPrimaryDark"
                 android:inputType="number"
                 android:hint="Alternate Mobile Number(optional))" />
 
@@ -174,7 +174,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="SAVE"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:textColor="@color/white"
                 android:layout_margin="16dp"/>
 
