@@ -1,5 +1,6 @@
 package com.aditya.bighatti.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +49,13 @@ public class DeliveryActivity extends AppCompatActivity {
         cartAdaptor.notifyDataSetChanged();
 
         changeORaddNewaddressBTN.setVisibility(View.VISIBLE);
+        changeORaddNewaddressBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DeliveryActivity.this,MyAddressesActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
