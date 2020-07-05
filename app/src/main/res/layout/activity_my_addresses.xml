@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MyAddressesActivity">
+    tools:context=".Activity.MyAddressesActivity"
+    android:background="#dedede">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -24,19 +25,66 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
+        android:id="@+id/add_new_addressBTN"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        android:background="@color/white"
+        android:elevation="4dp">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/add"
+            android:tint="@color/red"
+            android:padding="8dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add a new Address"
             android:textSize="16sp"
             android:textColor="@color/red"
-            android:padding="16dp"
-            android:drawableStart="@drawable/plus"/>
+            android:padding="16dp"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/num_address_saved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="addresses saved"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_new_addressBTN" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/addresses_RV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/deliver_hereBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/num_address_saved" />
+
+    <Button
+        android:id="@+id/deliver_hereBTN"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Deliver Here"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:background="@color/red"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:stateListAnimator="null"
+        android:elevation="6dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
