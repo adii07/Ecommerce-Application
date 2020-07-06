@@ -2,6 +2,8 @@ package com.aditya.bighatti.Activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.aditya.bighatti.Adaptor.AddressesAdaptor;
 import com.aditya.bighatti.Model.AddressesModel;
@@ -16,9 +18,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
+import static com.aditya.bighatti.Activity.DeliveryActivity.SELECT_ADDRESS;
+
 public class MyAddressesActivity extends AppCompatActivity {
 
     private RecyclerView myaddressesRV;
+    private Button deliverHereBTN;
     private static AddressesAdaptor addressesAdaptor;//static cause defined under a static method
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,7 @@ public class MyAddressesActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("MY Address");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         myaddressesRV=findViewById(R.id.addresses_RV);
+        deliverHereBTN=findViewById(R.id.deliver_hereBTN);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         myaddressesRV.setLayoutManager(layoutManager);
@@ -42,6 +48,10 @@ public class MyAddressesActivity extends AppCompatActivity {
         addressesModelList.add(new AddressesModel("Modi","7 Race cource road","1000129",false));
 
         int mode=getIntent().getIntExtra("MODE",-1);
+        if (mode ==SELECT_ADDRESS){
+            deliverHereBTN.setVisibility(View.VISIBLE);
+        }
+        else deliverHereBTN.setVisibility(View.GONE);
         addressesAdaptor=new AddressesAdaptor(addressesModelList,mode);
         myaddressesRV.setAdapter(addressesAdaptor);
         ((SimpleItemAnimator)myaddressesRV.getItemAnimator()).setSupportsChangeAnimations(false);//disable the default animation as ripple effect added
