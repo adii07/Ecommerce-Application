@@ -3,6 +3,7 @@ package com.aditya.bighatti.Adaptor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aditya.bighatti.Model.AddressesModel;
@@ -13,12 +14,18 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AddressesAdaptor extends RecyclerView.Adapter<AddressesAdaptor.ViewHolder> {
-    public AddressesAdaptor(List<AddressesModel> addressesModels) {
-        this.addressesModels = addressesModels;
-    }
+import static com.aditya.bighatti.Activity.DeliveryActivity.SELECT_ADDRESS;
+import static com.aditya.bighatti.Activity.MyAddressesActivity.refreshItem;
+import static com.aditya.bighatti.Fragments.MyAccountFragment.MANAGE_ADDRESS;
 
+public class AddressesAdaptor extends RecyclerView.Adapter<AddressesAdaptor.ViewHolder> {
     private  List<AddressesModel> addressesModels;
+    private int MODE;
+    private int preSelectedPosition;
+    public AddressesAdaptor(List<AddressesModel> addressesModels,int MODE) {
+        this.addressesModels = addressesModels;
+        this.MODE=MODE;
+    }
     @NonNull
     @Override
     public AddressesAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,7 +38,8 @@ public class AddressesAdaptor extends RecyclerView.Adapter<AddressesAdaptor.View
         String name=addressesModels.get(position).getFullName();
         String address=addressesModels.get(position).getAddress();
         String pincode=addressesModels.get(position).getPincode();
-        holder.setData(name,address,pincode);
+        Boolean selected=addressesModels.get(position).getSelected();
+        holder.setData(name,address,pincode,selected,position);
 
     }
 
@@ -44,16 +52,42 @@ public class AddressesAdaptor extends RecyclerView.Adapter<AddressesAdaptor.View
         private TextView fullName;
         private TextView address;
         private TextView pincode;
+        private ImageView icon;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             fullName=itemView.findViewById(R.id.name);
             address=itemView.findViewById(R.id.address);
             pincode=itemView.findViewById(R.id.pincode);
+            icon=itemView.findViewById(R.id.icon_view);
         }
-        private void setData(String username, String userAddress,String userPincode){
+        private void setData(String username, String userAddress, String userPincode, Boolean selected, final int position){
             fullName.setText(username);
             address.setText(userAddress);
             pincode.setText(userPincode);
+
+            if (MODE ==SELECT_ADDRESS){
+                icon.setImageResource(R.drawable.check);
+                if (selected){
+                    icon.setVisibility(View.VISIBLE);
+                    preSelectedPosition=position;
+                }
+                else{
+                    icon.setVisibility(View.GONE);
+                }
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (preSelectedPosition!=position){
+                            addressesModels.get(position).setSelected(true);
+                            addressesModels.get(preSelectedPosition).setSelected(false);
+                            refreshItem(preSelectedPosition,position);
+                            preSelectedPosition=position;
+                        } }});
+
+            }
+            else if(MODE == MANAGE_ADDRESS){
+
+            }
 
         }
     }
