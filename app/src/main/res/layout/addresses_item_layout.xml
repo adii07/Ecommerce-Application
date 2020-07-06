@@ -8,7 +8,8 @@
     android:background="@color/white"
     android:elevation="3dp"
     android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:foreground="?attr/selectableItemBackground">
 
     <TextView
         android:id="@+id/name"
@@ -64,6 +65,7 @@
         app:srcCompat="@drawable/check" />
 
     <LinearLayout
+        android:id="@+id/editBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
