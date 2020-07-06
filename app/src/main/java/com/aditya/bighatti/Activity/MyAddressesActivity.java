@@ -14,10 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
 public class MyAddressesActivity extends AppCompatActivity {
 
     private RecyclerView myaddressesRV;
+    private static AddressesAdaptor addressesAdaptor;//static cause defined under a static method
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +34,23 @@ public class MyAddressesActivity extends AppCompatActivity {
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         myaddressesRV.setLayoutManager(layoutManager);
 
-        List<AddressesModel> addressesModelList=new ArrayList<>();
-        addressesModelList.add(new AddressesModel("Modi","7 Race cource road","1000129"));
-        addressesModelList.add(new AddressesModel("Modi","Gujrat","100019"));
-        addressesModelList.add(new AddressesModel("Modi","Banglore","1000129"));
-        addressesModelList.add(new AddressesModel("Modi","7 Race cource road","1000129"));
-        AddressesAdaptor addressesAdaptor=new AddressesAdaptor(addressesModelList);
-        myaddressesRV.setAdapter(addressesAdaptor);
-        addressesAdaptor.notifyDataSetChanged();
 
+        List<AddressesModel> addressesModelList=new ArrayList<>();
+        addressesModelList.add(new AddressesModel("Modi","7 Race cource road","1000129",true));
+        addressesModelList.add(new AddressesModel("Modi","Gujrat","100019",false));
+        addressesModelList.add(new AddressesModel("Modi","Banglore","1000129",false));
+        addressesModelList.add(new AddressesModel("Modi","7 Race cource road","1000129",false));
+
+        int mode=getIntent().getIntExtra("MODE",-1);
+        addressesAdaptor=new AddressesAdaptor(addressesModelList,mode);
+        myaddressesRV.setAdapter(addressesAdaptor);
+        ((SimpleItemAnimator)myaddressesRV.getItemAnimator()).setSupportsChangeAnimations(false);//disable the default animation as ripple effect added
+        addressesAdaptor.notifyDataSetChanged();
+    }
+
+    public static void refreshItem(int deSelect,int select){
+        addressesAdaptor.notifyItemChanged(deSelect);
+        addressesAdaptor.notifyItemChanged(select);
 
     }
     @Override
