@@ -42,7 +42,7 @@ public class MyWishlistFragment extends Fragment {
         wishlistModelList.add(new WishlistModel(R.drawable.image7,"Lotte ChocoPie",2,"4.7",1169,"Rs. 100/-","Rs. 120","Cash On Delivery"));
         wishlistModelList.add(new WishlistModel(R.drawable.image7,"Lotte ChocoPie",1,"4.7",1169,"Rs. 100/-","Rs. 120","Cash On Delivery"));
 
-        wishlistAdaptor wishlistAdaptor=new wishlistAdaptor(wishlistModelList);
+        wishlistAdaptor wishlistAdaptor=new wishlistAdaptor(wishlistModelList,true);
         wishlistRecyclerView.setAdapter(wishlistAdaptor);
         wishlistAdaptor.notifyDataSetChanged();
         return view;
