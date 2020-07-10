@@ -1,5 +1,6 @@
 package com.aditya.bighatti.Adaptor;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aditya.bighatti.Activity.ProductDetailsActivity;
 import com.aditya.bighatti.Model.WishlistModel;
 import com.aditya.bighatti.R;
 
@@ -106,6 +108,14 @@ public class wishlistAdaptor extends RecyclerView.Adapter<wishlistAdaptor.ViewHo
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(itemView.getContext(),"Delete",Toast.LENGTH_LONG).show();
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(itemView.getContext(), ProductDetailsActivity.class);
+                    itemView.getContext().startActivity(intent);
                 }
             });
         }

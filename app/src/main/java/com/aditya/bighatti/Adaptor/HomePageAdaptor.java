@@ -1,5 +1,6 @@
 package com.aditya.bighatti.Adaptor;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.aditya.bighatti.Activity.HomePageModel;
 import com.aditya.bighatti.Activity.HorizontalProductModel;
 import com.aditya.bighatti.Activity.SliderModel;
+import com.aditya.bighatti.Activity.ViewAllActivity;
 import com.aditya.bighatti.R;
 
 import java.util.List;
@@ -228,6 +230,14 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
             if (horizontalProductModelList.size()>8)
             {
                 horizontalLayoutViewAllButton.setVisibility(View.VISIBLE);
+                horizontalLayoutViewAllButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent =new Intent(itemView.getContext(), ViewAllActivity.class);
+                        intent.putExtra("layout_code",0);
+                        itemView.getContext().startActivity(intent);
+                    }
+                });
             }
             else{
                 horizontalLayoutViewAllButton.setVisibility(View.INVISIBLE);
@@ -256,6 +266,14 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
         private void setGridLayoutTitle(List<HorizontalProductModel> horizontalProductModelList,String title){
             gridLayoutTitle.setText(title);
             gridView.setAdapter(new GridProductLayoutAdpator(horizontalProductModelList));
+            gridLayoutViewAllBTN.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent =new Intent(itemView.getContext(), ViewAllActivity.class);
+                    intent.putExtra("layout_code",1);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }
