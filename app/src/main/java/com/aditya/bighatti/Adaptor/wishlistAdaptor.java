@@ -18,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class wishlistAdaptor extends RecyclerView.Adapter<wishlistAdaptor.ViewHolder> {
    private  List<WishlistModel> wishlistModelList;
+   private Boolean wishlist;
 
-    public wishlistAdaptor(List<WishlistModel> wishlistModelList) {
+    public wishlistAdaptor(List<WishlistModel> wishlistModelList,Boolean wishlist) {
         this.wishlistModelList = wishlistModelList;
+        this.wishlist=wishlist;
     }
 
     @NonNull
@@ -94,6 +96,12 @@ public class wishlistAdaptor extends RecyclerView.Adapter<wishlistAdaptor.ViewHo
             productPrice.setText(price);
             productCuttedPrice.setText(cutPrice);
             paymentMethods.setText(method);
+            if (wishlist) {
+                deleteBTN.setVisibility(View.VISIBLE);
+            }
+            else {
+                deleteBTN.setVisibility(View.GONE);
+            }
             deleteBTN.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
