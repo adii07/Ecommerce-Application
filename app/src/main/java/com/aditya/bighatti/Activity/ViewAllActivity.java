@@ -1,0 +1,35 @@
+package com.aditya.bighatti.Activity;
+
+import android.os.Bundle;
+import android.view.MenuItem;
+
+import com.aditya.bighatti.R;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class ViewAllActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_all);
+        Toolbar toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle("Deals of the day(DEMO)");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()== android.R.id.home);
+
+        return super.onOptionsItemSelected(item);
+
+    }
+}
