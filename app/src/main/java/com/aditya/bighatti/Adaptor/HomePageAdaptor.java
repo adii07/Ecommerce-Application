@@ -111,7 +111,7 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
     public class BannerSliderViewHolder extends RecyclerView.ViewHolder {
 
         private ViewPager banner_slider_ViewPager;
-        private int currentPage = 2;
+        private int currentPage;
         private Timer timer;
         final private long delayTime = 3000;
         final private long PeriodTime = 3000;
@@ -122,6 +122,11 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
         }
 
         private void setBannerSliderViewPager(final List sliderModelList) {
+
+            currentPage=2;
+            if (timer!=null){
+                timer.cancel();
+            }
             SliderAdaptor sliderAdaptor = new SliderAdaptor(sliderModelList);
             banner_slider_ViewPager.setAdapter(sliderAdaptor);
             banner_slider_ViewPager.setClipToPadding(false);
