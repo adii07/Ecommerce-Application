@@ -18,6 +18,7 @@ import com.aditya.bighatti.Activity.SliderModel;
 import com.aditya.bighatti.Activity.ViewAllActivity;
 import com.aditya.bighatti.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -115,19 +116,34 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
         private Timer timer;
         final private long delayTime = 3000;
         final private long PeriodTime = 3000;
+        private List<SliderModel> arrangedList;
 
         public BannerSliderViewHolder(@NonNull View itemView) {
             super(itemView);
             banner_slider_ViewPager = itemView.findViewById(R.id.banner_slider_viewPagger);
         }
 
-        private void setBannerSliderViewPager(final List sliderModelList) {
+        private void setBannerSliderViewPager(final List<SliderModel> sliderModelList) {
 
             currentPage=2;
             if (timer!=null){
                 timer.cancel();
             }
-            SliderAdaptor sliderAdaptor = new SliderAdaptor(sliderModelList);
+            arrangedList=new ArrayList<>();
+
+            int i;
+            for (i = 0; i<arrangedList.size(); i++);
+            {
+
+                arrangedList.set(i,arrangedList.get(i));
+            }
+
+            arrangedList.add(0,sliderModelList.get(sliderModelList.size()-2));
+            arrangedList.add(1,sliderModelList.get(sliderModelList.size()-1));
+            arrangedList.add(sliderModelList.get(0));
+            arrangedList.add(sliderModelList.get(1));
+
+            SliderAdaptor sliderAdaptor = new SliderAdaptor(arrangedList);
             banner_slider_ViewPager.setAdapter(sliderAdaptor);
             banner_slider_ViewPager.setClipToPadding(false);
             banner_slider_ViewPager.setPageMargin(20);
@@ -146,20 +162,20 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
                 @Override
                 public void onPageScrollStateChanged(int state) {
                     if (state == ViewPager.SCROLL_STATE_IDLE) {
-                        pageLooper(sliderModelList);
+                        pageLooper(arrangedList);
                     }
                 }
             };
             banner_slider_ViewPager.addOnPageChangeListener(onPageChangeListener);
-            startBannerAmin(sliderModelList);
+            startBannerAmin(arrangedList);
 
             banner_slider_ViewPager.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
-                    pageLooper(sliderModelList);
+                    pageLooper(arrangedList);
                     stopBannerAmin();
                     if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                        startBannerAmin(sliderModelList);
+                        startBannerAmin(arrangedList);
                     }
                     return false;
                 }
