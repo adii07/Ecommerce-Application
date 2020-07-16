@@ -1,8 +1,11 @@
 package com.aditya.bighatti.Adaptor;
 
+import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -133,6 +136,33 @@ public class CartAdaptor extends RecyclerView.Adapter {
                 offersApplied.setVisibility(View.INVISIBLE);
             }
 
+            productQuantity.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final Dialog quantityDialog=new Dialog(itemView.getContext());
+                    quantityDialog.setContentView(R.layout.quantity_dialog);
+                    quantityDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    quantityDialog.setCancelable(false);
+                    final EditText quantTXT=quantityDialog.findViewById(R.id.quantity_txt);
+                    Button cancelBTN=quantityDialog.findViewById(R.id.cancelBtn);
+                    Button okayBTN=quantityDialog.findViewById(R.id.OkayBTN);
+                    cancelBTN.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            quantityDialog.dismiss();
+                        }
+                    });
+                    okayBTN.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String num=quantTXT.getText().toString();
+                            productQuantity.setText("Qty: "+num);
+                            quantityDialog.dismiss();
+                        }
+                    });
+                    quantityDialog.show();
+                }
+            });
         }
 
     }
