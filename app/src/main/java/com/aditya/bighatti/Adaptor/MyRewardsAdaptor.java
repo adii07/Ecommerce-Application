@@ -15,15 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyRewardsAdaptor extends RecyclerView.Adapter<MyRewardsAdaptor.ViewHolder> {
     private List<MyRewardModel> myRewardModelList;
+    private Boolean useMiniLayout=false;
 
-    public MyRewardsAdaptor(List<MyRewardModel> myRewardModelList) {
+    public MyRewardsAdaptor(List<MyRewardModel> myRewardModelList,Boolean useMiniLayout) {
         this.myRewardModelList = myRewardModelList;
+        this.useMiniLayout=useMiniLayout;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.rewards_item_layout,parent,false);
+        View view;
+        if (useMiniLayout){
+           view= LayoutInflater.from(parent.getContext()).inflate(R.layout.mini_rewards_item_layout,parent,false);
+        }
+        else {
+            view= LayoutInflater.from(parent.getContext()).inflate(R.layout.rewards_item_layout,parent,false);
+        }
        return new ViewHolder(view);
     }
 
