@@ -1,5 +1,6 @@
 package com.aditya.bighatti.Activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -7,12 +8,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.aditya.bighatti.Adaptor.MyRewardsAdaptor;
 import com.aditya.bighatti.Adaptor.ProductImagesAdaptor;
 import com.aditya.bighatti.Adaptor.product_details_adaptor;
+import com.aditya.bighatti.Model.MyRewardModel;
 import com.aditya.bighatti.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -23,6 +28,8 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 public class ProductDetailsActivity extends AppCompatActivity {
@@ -34,10 +41,16 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ViewPager productDetailsViewPager;
     private TabLayout productDetailsTabLayout;
     private Button buyNowBTN;
+    private Button couponRedeemBTN;
     ///ratings layout
     private LinearLayout rateNowContainer;
     ///ratings layout
 
+    ///coupon dialog
+    public static TextView couponTitle,couponBody,couponExpiryDate;
+    private static RecyclerView couponRv;
+    private static LinearLayout selectedCoupon;
+    ///coupon dialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +66,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productDetailsViewPager=findViewById(R.id.product_details_viewPager);
         productDetailsTabLayout=findViewById(R.id.product_details_tab_layout);
         buyNowBTN=findViewById(R.id.buy_now_button);
+        couponRedeemBTN=findViewById(R.id.coupon_redemption_btn);
         List<Integer>  productImages =new ArrayList<>();
         productImages.add(R.drawable.amul);
         productImages.add(R.drawable.amul);
@@ -116,6 +130,68 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 startActivity(buyNowIntent);
             }
         });
+
+        /////coupon dialog
+        final Dialog redeemDialog=new Dialog(ProductDetailsActivity.this);
+        redeemDialog.setContentView(R.layout.coupon_redeem_dialog);
+        redeemDialog.setCancelable(true);
+        redeemDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        ImageView toggleCouponRV=redeemDialog.findViewById(R.id.toggle_rv);
+        couponRv=redeemDialog.findViewById(R.id.coupons_rv);
+        selectedCoupon=redeemDialog.findViewById(R.id.selected_coupon);
+        couponTitle=redeemDialog.findViewById(R.id.coupon_title);
+        couponBody=redeemDialog.findViewById(R.id.coupon_body);
+        couponExpiryDate=redeemDialog.findViewById(R.id.coupon_validity);
+
+        TextView originalPrice=redeemDialog.findViewById(R.id.original_price);
+        TextView couponPrice=redeemDialog.findViewById(R.id.after_price);
+
+        LinearLayoutManager layoutManager=new LinearLayoutManager(ProductDetailsActivity.this);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        couponRv.setLayoutManager(layoutManager);
+
+        List<MyRewardModel> myRewardModelList=new ArrayList<>();
+        myRewardModelList.add(new MyRewardModel("CashBack","Till 30th June,2020","20% cashback Applicable on any product above Rs.200/- using Google Pay."));
+        myRewardModelList.add(new MyRewardModel("CashBack","Till 4th July,2020","30% cashback Applicable on any product above Rs.500/- using Google Pay."));
+        myRewardModelList.add(new MyRewardModel("CashBack","Till 30th July,2020","10% cashback Applicable on any product above Rs.100/- using Google Pay."));
+        myRewardModelList.add(new MyRewardModel("CashBack","Till 10th August,2020","50% cashback Applicable on any product above Rs.5000/- using Google Pay."));
+        myRewardModelList.add(new MyRewardModel("CashBack","Till 30th June,2020","20% cashback Applicable on any product above Rs.200/- using Google Pay."));
+        myRewardModelList.add(new MyRewardModel("CashBack","Till 4th July,2020","30% cashback Applicable on any product above Rs.500/- using Google Pay."));
+        myRewardModelList.add(new MyRewardModel("CashBack","Till 30th July,2020","10% cashback Applicable on any product above Rs.100/- using Google Pay."));
+        myRewardModelList.add(new MyRewardModel("CashBack","Till 10th August,2020","50% cashback Applicable on any product above Rs.5000/- using Google Pay."));
+
+
+        MyRewardsAdaptor myRewardsAdaptor=new MyRewardsAdaptor(myRewardModelList,true);
+        couponRv.setAdapter(myRewardsAdaptor);
+        myRewardsAdaptor.notifyDataSetChanged();
+
+
+        toggleCouponRV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialogRV();
+            }
+        });
+        ///coupon dialog
+        couponRedeemBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                               redeemDialog.show();
+            }
+        });
+    }
+
+    public static void showDialogRV(){
+        if (couponRv.getVisibility()==View.GONE){
+            couponRv.setVisibility(View.VISIBLE);
+            selectedCoupon.setVisibility(View.GONE);
+        }
+        else {
+            couponRv.setVisibility(View.GONE);
+            selectedCoupon.setVisibility(View.VISIBLE);
+        }
+
     }
 
     private void setRatings(int star_position) {

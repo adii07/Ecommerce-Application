@@ -43,7 +43,7 @@ public class MyRewardsFragment extends Fragment {
         myRewardModelList.add(new MyRewardModel("CashBack","Till 30th July,2020","10% cashback Applicable on any product above Rs.100/- using Google Pay."));
         myRewardModelList.add(new MyRewardModel("CashBack","Till 10th August,2020","50% cashback Applicable on any product above Rs.5000/- using Google Pay."));
 
-        MyRewardsAdaptor myRewardsAdaptor=new MyRewardsAdaptor(myRewardModelList);
+        MyRewardsAdaptor myRewardsAdaptor=new MyRewardsAdaptor(myRewardModelList,false);
         rewardsRecyclerView.setAdapter(myRewardsAdaptor);
         myRewardsAdaptor.notifyDataSetChanged();
         return view;

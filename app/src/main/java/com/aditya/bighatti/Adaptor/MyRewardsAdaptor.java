@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.aditya.bighatti.Activity.ProductDetailsActivity;
 import com.aditya.bighatti.Model.MyRewardModel;
 import com.aditya.bighatti.R;
 
@@ -60,10 +61,21 @@ public class MyRewardsAdaptor extends RecyclerView.Adapter<MyRewardsAdaptor.View
             couponValidity=itemView.findViewById(R.id.coupon_validity);
             couponBody=itemView.findViewById(R.id.coupon_body);
         }
-        private  void setData(String title, String expiry, String body){
+        private  void setData(final String title, final String expiry, final String body){
             couponTitle.setText(title);
             couponValidity.setText(expiry);
             couponBody.setText(body);
+            if (useMiniLayout){
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ProductDetailsActivity.couponTitle.setText(title);
+                        ProductDetailsActivity.couponBody.setText(body);
+                        ProductDetailsActivity.couponExpiryDate.setText(expiry);
+                        ProductDetailsActivity.showDialogRV();
+                    }
+                });
+            }
         }
     }
 }
