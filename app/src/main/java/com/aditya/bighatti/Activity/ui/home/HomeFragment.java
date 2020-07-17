@@ -52,7 +52,12 @@ public class HomeFragment extends Fragment {
 
         //////////////////////////////////////banner slider
        List<SliderModel> sliderModelList =new ArrayList<SliderModel>();
-
+        sliderModelList.add(new SliderModel(R.drawable.banner));
+        sliderModelList.add(new SliderModel(R.drawable.banner4));
+        sliderModelList.add(new SliderModel(R.drawable.banner2));
+        sliderModelList.add(new SliderModel(R.drawable.banner3));
+        sliderModelList.add(new SliderModel(R.drawable.banner5));
+        sliderModelList.add(new SliderModel(R.drawable.banner6));
         /////////////////////////////Horizontal Product Layout
         List<HorizontalProductModel> horizontalProductModelList=new ArrayList<>();
         horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image,"Aashirvaad Aata","10kg","Rs. 590"));

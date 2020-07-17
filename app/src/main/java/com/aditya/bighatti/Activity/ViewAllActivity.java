@@ -34,7 +34,7 @@ public class ViewAllActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView=findViewById(R.id.recyclerView);
         gridView=findViewById(R.id.gridView);
-        int layout_code=getIntent().getIntExtra("layout_extra",-1);
+        int layout_code=getIntent().getIntExtra("layout_code",-1);
 
         if (layout_code==0)
         {

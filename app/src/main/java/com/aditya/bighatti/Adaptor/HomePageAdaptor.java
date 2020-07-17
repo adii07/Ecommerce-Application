@@ -3,6 +3,7 @@ package com.aditya.bighatti.Adaptor;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -131,15 +132,13 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
             }
             arrangedList=new ArrayList<>();
 
-            int i;
-            for (i = 0; i<arrangedList.size(); i++);
-            {
 
-                arrangedList.set(i,arrangedList.get(i));
+            for (int x=0;x<sliderModelList.size();x++){
+                arrangedList.add(x,sliderModelList.get(x));
             }
-
-            arrangedList.add(0,sliderModelList.get(sliderModelList.size()-2));
-            arrangedList.add(1,sliderModelList.get(sliderModelList.size()-1));
+            Log.v("tag",""+sliderModelList.size());
+            arrangedList.add(0,sliderModelList.get(sliderModelList.size() - 2));
+            arrangedList.add(1,sliderModelList.get(sliderModelList.size() - 1));
             arrangedList.add(sliderModelList.get(0));
             arrangedList.add(sliderModelList.get(1));
 
