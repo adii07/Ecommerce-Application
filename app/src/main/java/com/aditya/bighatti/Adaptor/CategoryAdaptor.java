@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.aditya.bighatti.Activity.CategoryActivity;
 import com.aditya.bighatti.Activity.CategoryModel;
 import com.aditya.bighatti.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -39,6 +41,7 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.Myview
         String icon=categoryModelList.get(position).getCategory_icon_link();
         String name=categoryModelList.get(position).getCategory_name();
         holder.setCategory(name,position);
+        holder.setCategoryIcon(icon);
 
     }
 
@@ -58,8 +61,10 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.Myview
             category_nme=itemView.findViewById(R.id.category_name);
         }
 
-        private void setCategoryIcon(){
-        ////todo:Set category icon
+        private void setCategoryIcon(String iconUrl){
+            if (!iconUrl.equals("null")){
+                Glide.with(itemView.getContext()).load(iconUrl).apply(new RequestOptions().placeholder(R.drawable.home)).into(category_icn);
+            }
         }
         private void setCategory(final String name,final int position){
             category_nme.setText(name);
