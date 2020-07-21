@@ -7,6 +7,8 @@ import android.widget.ImageView;
 
 import com.aditya.bighatti.Activity.SliderModel;
 import com.aditya.bighatti.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -29,7 +31,8 @@ public class SliderAdaptor extends PagerAdapter {
         ConstraintLayout bannerContainer=view.findViewById(R.id.banner_container);
         //bannerContainer.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(sliderModelList.get(position).getBackgroundColor())));
         ImageView banner=view.findViewById(R.id.banner_slide);
-        banner.setImageResource(sliderModelList.get(position).getBanner());
+        Glide.with(container.getContext()).load(sliderModelList.get(position).getBanner()).apply(new RequestOptions().placeholder(R.drawable.banner)).into(banner);
+    //        banner.setImageResource(sliderModelList.get(position).getBanner());
         container.addView(view,0);
         return view;
     }

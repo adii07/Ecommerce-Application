@@ -34,33 +34,34 @@ public class CategoryActivity extends AppCompatActivity {
 
 
         //////////////////////////////////////banner slider
-        List<SliderModel> sliderModelList =new ArrayList<SliderModel>();
+//        List<SliderModel> sliderModelList =new ArrayList<SliderModel>();
+
         ////////////////////last 2 banners
-        sliderModelList.add(new SliderModel(R.drawable.banner5));
-        sliderModelList.add(new SliderModel(R.drawable.banner6));
-        ////////////original sequence
-        sliderModelList.add(new SliderModel(R.drawable.banner));
-        sliderModelList.add(new SliderModel(R.drawable.banner4));
-        sliderModelList.add(new SliderModel(R.drawable.banner2));
-        sliderModelList.add(new SliderModel(R.drawable.banner3));
-        sliderModelList.add(new SliderModel(R.drawable.banner5));
-        sliderModelList.add(new SliderModel(R.drawable.banner6));
+//        sliderModelList.add(new SliderModel(R.drawable.banner5));
+//        sliderModelList.add(new SliderModel(R.drawable.banner6));
+//        ////////////original sequence
+//        sliderModelList.add(new SliderModel(R.drawable.banner));
+//        sliderModelList.add(new SliderModel(R.drawable.banner4));
+//        sliderModelList.add(new SliderModel(R.drawable.banner2));
+//        sliderModelList.add(new SliderModel(R.drawable.banner3));
+//        sliderModelList.add(new SliderModel(R.drawable.banner5));
+//        sliderModelList.add(new SliderModel(R.drawable.banner6));
         ////////////original sequence
         ///////first 2 banner
-        sliderModelList.add(new SliderModel(R.drawable.banner));
-        sliderModelList.add(new SliderModel(R.drawable.banner4));
+//        sliderModelList.add(new SliderModel(R.drawable.banner));
+//        sliderModelList.add(new SliderModel(R.drawable.banner4));
 
         /////////////////////////////Horizontal Product Layout
-        List<HorizontalProductModel> horizontalProductModelList=new ArrayList<>();
-        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image,"Aashirvaad Aata","10kg","Rs. 590"));
-        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image2,"Royal Aata","10kg","Rs. 540"));
-        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image3,"Hershey Syrup","450 g","Rs. 200"));
-        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image4,"Nestle Ice Tea","1L","Rs. 120"));
-        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5,"Roofafza","750mL","Rs. 150"));
-        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image6,"Hide And Seek","120g","Rs. 30"));
-        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image7,"Lotte Choco Pie","300g","Rs. 140"));
-        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image8,"Little Hearts","18g","Rs. 10"));
-        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5,"Roofafza","750mL","Rs. 150"));
+//        List<HorizontalProductModel> horizontalProductModelList=new ArrayList<>();
+//        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image,"Aashirvaad Aata","10kg","Rs. 590"));
+//        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image2,"Royal Aata","10kg","Rs. 540"));
+//        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image3,"Hershey Syrup","450 g","Rs. 200"));
+//        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image4,"Nestle Ice Tea","1L","Rs. 120"));
+//        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5,"Roofafza","750mL","Rs. 150"));
+//        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image6,"Hide And Seek","120g","Rs. 30"));
+//        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image7,"Lotte Choco Pie","300g","Rs. 140"));
+//        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image8,"Little Hearts","18g","Rs. 10"));
+//        horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5,"Roofafza","750mL","Rs. 150"));
 
 
 
@@ -68,13 +69,13 @@ public class CategoryActivity extends AppCompatActivity {
         testingLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         categoryRecyclerView.setLayoutManager(testingLayoutManager);
         List<HomePageModel> homePageModelList=new ArrayList<>();
-        homePageModelList.add(new HomePageModel(0,sliderModelList));
-        homePageModelList.add(new HomePageModel(1,R.drawable.stipadd1,"#000000"));
-        homePageModelList.add(new HomePageModel(2,"Deals of the day!",horizontalProductModelList));
-        homePageModelList.add(new HomePageModel(3,"Categories",horizontalProductModelList));
-        homePageModelList.add(new HomePageModel(1,R.drawable.stipadd,"#ff0000"));
-        homePageModelList.add(new HomePageModel(2,"Deals of the day!",horizontalProductModelList));
-        homePageModelList.add(new HomePageModel(1,R.drawable.banner,"#ffff00"));
+//        homePageModelList.add(new HomePageModel(0,sliderModelList));
+//        homePageModelList.add(new HomePageModel(1,R.drawable.stipadd1,"#000000"));
+//        homePageModelList.add(new HomePageModel(2,"Deals of the day!",horizontalProductModelList));
+//        homePageModelList.add(new HomePageModel(3,"Categories",horizontalProductModelList));
+//        homePageModelList.add(new HomePageModel(1,R.drawable.stipadd,"#ff0000"));
+//        homePageModelList.add(new HomePageModel(2,"Deals of the day!",horizontalProductModelList));
+//        homePageModelList.add(new HomePageModel(1,R.drawable.banner,"#ffff00"));
         HomePageAdaptor adaptor=new HomePageAdaptor(homePageModelList);
         categoryRecyclerView.setAdapter(adaptor);
         adaptor.notifyDataSetChanged();

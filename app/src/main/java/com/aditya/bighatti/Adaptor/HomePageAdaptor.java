@@ -18,6 +18,8 @@ import com.aditya.bighatti.Activity.HorizontalProductModel;
 import com.aditya.bighatti.Activity.SliderModel;
 import com.aditya.bighatti.Activity.ViewAllActivity;
 import com.aditya.bighatti.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +88,7 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
                 ((BannerSliderViewHolder) holder).setBannerSliderViewPager(sliderModelList);
                 break;
             case HomePageModel.STRIP_ADD_BANNER:
-                int resource = homePageModelList.get(position).getResource();
+                String resource = homePageModelList.get(position).getResource();
                 String color = homePageModelList.get(position).getBackgroundColor();
                 ((StripAddBannerViewHolder) holder).setStripAdd(resource, color);
                 break;
@@ -229,8 +231,9 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
             strip_add_container = itemView.findViewById(R.id.strip_add_container);
         }
 
-        private void setStripAdd(int resource, String color) {
-            strip_add_image.setImageResource(resource);
+        private void setStripAdd(String resource, String color) {
+//            strip_add_image.setImageResource(resource);
+            Glide.with(itemView.getContext()).load(resource).apply(new RequestOptions().placeholder(R.drawable.stipadd)).into(strip_add_image);
             strip_add_container.setBackgroundColor(Color.parseColor(color));
         }
     }
