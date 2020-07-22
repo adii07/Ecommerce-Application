@@ -66,19 +66,19 @@ public class ViewAllActivity extends AppCompatActivity {
         {
             gridView.setVisibility(View.VISIBLE);
             List<HorizontalProductModel> horizontalProductModelList = new ArrayList<>();
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image, "Aashirvaad Aata", "10kg", "Rs. 590"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.amul, "Amul Chesse", "120g", "Rs. 100"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image2, "Royal Aata", "10kg", "Rs. 540"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image3, "Hershey Syrup", "450 g", "Rs. 200"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image4, "Nestle Ice Tea", "1L", "Rs. 120"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5, "Roofafza", "750mL", "Rs. 150"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image6, "Hide And Seek", "120g", "Rs. 30"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image7, "Lotte Choco Pie", "300g", "Rs. 140"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image8, "Little Hearts", "18g", "Rs. 10"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5, "Roofafza", "750mL", "Rs. 150"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image3, "Hershey Syrup", "450 g", "Rs. 200"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image4, "Nestle Ice Tea", "1L", "Rs. 120"));
-            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5, "Roofafza", "750mL", "Rs. 150"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image, "Aashirvaad Aata", "10kg", "Rs. 590"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.amul, "Amul Chesse", "120g", "Rs. 100"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image2, "Royal Aata", "10kg", "Rs. 540"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image3, "Hershey Syrup", "450 g", "Rs. 200"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image4, "Nestle Ice Tea", "1L", "Rs. 120"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5, "Roofafza", "750mL", "Rs. 150"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image6, "Hide And Seek", "120g", "Rs. 30"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image7, "Lotte Choco Pie", "300g", "Rs. 140"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image8, "Little Hearts", "18g", "Rs. 10"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5, "Roofafza", "750mL", "Rs. 150"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image3, "Hershey Syrup", "450 g", "Rs. 200"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image4, "Nestle Ice Tea", "1L", "Rs. 120"));
+//            horizontalProductModelList.add(new HorizontalProductModel(R.drawable.image5, "Roofafza", "750mL", "Rs. 150"));
             GridProductLayoutAdpator adpator = new GridProductLayoutAdpator(horizontalProductModelList);
             gridView.setAdapter(adpator);
         }

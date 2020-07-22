@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.aditya.bighatti.Activity.HorizontalProductModel;
 import com.aditya.bighatti.Activity.ProductDetailsActivity;
 import com.aditya.bighatti.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class HorizontalProductScrollAdaptor extends RecyclerView.Adapter<Horizon
 
     @Override
     public void onBindViewHolder(@NonNull HorizontalProductScrollAdaptor.MyviewHolder holder, int position) {
-    int resouce=horizontalProductModelList.get(position).getProductImage();
+    String resouce=horizontalProductModelList.get(position).getProductImage();
     String title=horizontalProductModelList.get(position).getProductTitle();
     String description=horizontalProductModelList.get(position).getProductDescription();
     String price=horizontalProductModelList.get(position).getProductPrice();
@@ -73,8 +75,8 @@ public class HorizontalProductScrollAdaptor extends RecyclerView.Adapter<Horizon
             });
         }
 
-        private void setProductImage(int resouce){
-            productImage.setImageResource(resouce);
+        private void setProductImage(String resouce){
+            Glide.with(itemView.getContext()).load(resouce).apply(new RequestOptions().placeholder(R.drawable.home)).into(productImage);
         }
 
         private void setProductTitle(String title){
@@ -85,7 +87,7 @@ public class HorizontalProductScrollAdaptor extends RecyclerView.Adapter<Horizon
             productDescription.setText(des);
         }
         private void setProductPrice(String price){
-            productPrice.setText(price);
+            productPrice.setText("Rs."+price+"/-");
         }
 
     }

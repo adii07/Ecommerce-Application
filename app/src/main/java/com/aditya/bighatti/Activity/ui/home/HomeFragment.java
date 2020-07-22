@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.aditya.bighatti.Activity.CategoryModel;
 import com.aditya.bighatti.Activity.HomePageModel;
+import com.aditya.bighatti.Activity.HorizontalProductModel;
 import com.aditya.bighatti.Activity.SliderModel;
 import com.aditya.bighatti.Adaptor.CategoryAdaptor;
 import com.aditya.bighatti.Adaptor.HomePageAdaptor;
@@ -122,6 +123,7 @@ public class HomeFragment extends Fragment {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot documentSnapshot : task.getResult()){
 
+                        //Banner Slider
                         if ((long) documentSnapshot.get("view_type")==0){
                             List<SliderModel> sliderModelList=new ArrayList<>();
                             long number_of_banner=(long)documentSnapshot.get("no_of_banner");
@@ -131,11 +133,25 @@ public class HomeFragment extends Fragment {
                             }
                             homePageModelList.add(new HomePageModel(0,sliderModelList));
                         }
+                        //Strip add view
                         else if(((long) documentSnapshot.get("view_type"))==1){
                             homePageModelList.add(new HomePageModel(1,documentSnapshot.get("strip_add_banner").toString()
                                     ,documentSnapshot.get("background").toString()));
                         }
+                        //Horizontal product view
                         else if(((long) documentSnapshot.get("view_type"))==2){
+                            List<HorizontalProductModel> horizontalProductModelList=new ArrayList<>();
+                            long number_of_products=(long)documentSnapshot.get("no_of_products");
+                            for (long x=1;x<=number_of_products;x++){
+                                horizontalProductModelList.add(new HorizontalProductModel(
+                                        documentSnapshot.get("product_ID_"+x).toString(),
+                                        documentSnapshot.get("product_image_"+x).toString(),
+                                        documentSnapshot.get("product_price_"+x).toString(),
+                                        documentSnapshot.get("product_subtitle_"+x).toString(),
+                                        documentSnapshot.get("product_title_"+x).toString()));
+                            }
+                            homePageModelList.add(new HomePageModel(2,documentSnapshot.get("layout_title").toString(),horizontalProductModelList));
+
 
                         }
                         else if (((long) documentSnapshot.get("view_type"))==3){
