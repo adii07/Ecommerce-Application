@@ -288,6 +288,7 @@ public class HomePageAdaptor extends RecyclerView.Adapter {
         }
         private void setGridLayoutTitle(List<HorizontalProductModel> horizontalProductModelList,String title){
             gridLayoutTitle.setText(title);
+
             gridView.setAdapter(new GridProductLayoutAdpator(horizontalProductModelList));
             gridLayoutViewAllBTN.setOnClickListener(new View.OnClickListener() {
                 @Override
